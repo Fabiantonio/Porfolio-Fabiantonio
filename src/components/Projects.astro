@@ -1,0 +1,186 @@
+---
+import HtmlIcon from "./icons/HtmlIcon.astro";
+import CssIcon from "./icons/CssIcon.astro";
+import JavascriptIcon from "./icons/JavascriptIcon.astro";
+import PythonIcon from "./icons/PythonIcon.astro";
+import DjangoIcon from "./icons/DjangoIcon.astro";
+import TypeScriptIcon from "./icons/TypeScriptIcon.astro";
+import AngularIcon from "./icons/AngularIcon.astro";
+import IonicIcon from "./icons/IonicIcon.astro";
+import FireBase from "./icons/FireBase.astro";
+import BoostrapIcon from "./icons/boostrapIcon.astro";
+
+const TAGS = {
+    HTML: {
+        name: "Html",
+        class: "bg-[#ffdccd] text-black",
+        icon: HtmlIcon,
+    },
+    CSS: {
+        name: "Css",
+        class: "bg-[#bdd3dc] text-black",
+        icon: CssIcon,
+    },
+    JAVASCRIPT: {
+        name: "Javascript",
+        class: "bg-[#f0e9bc] text-black",
+        icon: JavascriptIcon,
+    },
+    PYTHON: {
+        name: "Python",
+        class: "bg-[#515641] text-white",
+        icon: PythonIcon,
+    },
+    DJANGO: {
+        name: "Django",
+        class: "bg-[#123226] text-white",
+        icon: DjangoIcon,
+    },
+    TYPESCRIPT: {
+        name: "Typescript",
+        class: "bg-[#bdd3dc] text-black",
+        icon: TypeScriptIcon,
+    },
+    ANGULAR: {
+        name: "Angular",
+        class: "bg-[#e5d8f1] text-black",
+        icon: AngularIcon,
+    },
+    IONIC: {
+        name: "Ionic",
+        class: "bg-[#0b1933] text-white",
+        icon: IonicIcon,
+    },
+    FIREBASE: {
+        name: "Firebase",
+        class: "bg-[#f6ede4] text-black",
+        icon: FireBase,
+    },
+    BOOSTRAP: {
+        name: "Bootstrap ",
+        class: "bg-[#e0cbf8] text-black",
+        icon: BoostrapIcon,
+    },
+};
+
+const PROJECTS = [
+    {
+        title: "LittleShop",
+        description:
+            "E-Commerce enfocado en accesorios y alimentos para mascotas",
+        link: "#",
+        github: "#",
+        images: [
+            "/public/622shots_so.webp",
+            "/public/LittleShop_Product.webp",
+            "/public/LittleShop_Crud.webp",
+        ],
+        tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.BOOSTRAP, TAGS.PYTHON, TAGS.DJANGO],
+    },
+    {
+        title: "TareApp",
+        description:
+            "Aplicación enfocada en poder crear tareas por hacer en el día a día y tener un sierto control sobre ellas",
+        link: "#",
+        github: "#",
+        images: [
+            "/public/TareApp_login.webp",
+            "/public/TareApp_Main.webp",
+            "/public/TareApp_Perfil.webp",
+        ],
+        tags: [TAGS.IONIC, TAGS.ANGULAR, TAGS.TYPESCRIPT, TAGS.FIREBASE, TAGS.HTML, TAGS.CSS],
+    },
+];
+---
+
+{
+    PROJECTS.map((project) => (
+        <article class="mb-20 p-4 sm:p-0">
+            <h3 class="text-2xl font-semibold text-red-200 mb-2">
+                {project.title}
+            </h3>
+            <p class="text-lg mb-4 text-pretty">{project.description}</p>
+            <ul class="flex gap-x-2 flex-wrap mb-2 sm:flex-row">
+                {project.tags.map((tag) => (
+                    <li>
+                        <span
+                            class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 m-1`}
+                        >
+                            <tag.icon class="size-4" /> {tag.name}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+
+            <div
+                id="controls-carousel"
+                class="relative w-full"
+                data-carousel="static"
+            >
+                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                    {project.images.map((image) => (
+                        <div
+                            class="hidden duration-700 ease-in-out"
+                            data-carousel-item
+                        >
+                            <img
+                                src={image}
+                                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                alt="..."
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                <button
+                    type="button"
+                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-prev
+                >
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/50 dark:bg-gray-800/30 group-hover:bg-black/30 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg
+                            class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 6 10"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 1 1 5l4 4"
+                            />
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button
+                    type="button"
+                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-next
+                >
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/50 dark:bg-gray-800/30 group-hover:bg-black/30 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg
+                            class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 6 10"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="m1 9 4-4-4-4"
+                            />
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
+            </div>
+        </article>
+    ))
+}

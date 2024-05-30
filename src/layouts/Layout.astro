@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import { ViewTransitions } from 'astro:transitions';
 
 import "@fontsource-variable/onest";
 
@@ -20,7 +21,7 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-
+		<ViewTransitions />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>

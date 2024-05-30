@@ -11,16 +11,14 @@
             <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
         </svg>
     </button>
-
 </header>
 
-<nav class="hidden flex flex-col gap-2 text-xl opacity-80 bg-[#1d1d2a] px-4" id="mobile-menu">
+<nav class="hidden flex-col gap-2 text-xl opacity-0  px-4 transition-all duration-500 ease-in-out max-h-0 overflow-hidden" id="mobile-menu">
     <a class="border-b-2 hover:-translate-y-1 hover:scale-110 duration-300" href="#experiencia">Sobre mí</a>
     <a class="border-b-2 hover:-translate-y-1 hover:scale-110 duration-300" href="#proyectos">Proyectos</a>
     <a class="border-b-2 hover:-translate-y-1 hover:scale-110 duration-300" href="mailto:vntoniojr@outlook.com" target="_blank">Contacto</a>
     <a class="border-b-2 hover:-translate-y-1 hover:scale-110 duration-300" href="#header">Inicio</a>
 </nav>
-
 
 <script>
     const menuToggle = document.getElementById('menu-toggle');
@@ -28,7 +26,20 @@
 
     if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0', 'max-h-0');
+                    mobileMenu.classList.add('opacity-100', 'max-h-screen');
+                }, 10); // Slight delay to ensure transition works
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'max-h-screen');
+                mobileMenu.classList.add('opacity-0', 'max-h-0');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 500); // Match the duration of the transition
+            }
         });
     }
 </script>

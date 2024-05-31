@@ -6,18 +6,18 @@
         <a class="hover:-translate-y-1 hover:scale-110 duration-300" href="#proyectos">Proyectos</a>
         <a class="hover:-translate-y-1 hover:scale-110 duration-300" href="mailto:vntoniojr@outlook.com" target="_blank">Contacto</a>
     </nav>
-    <button class="lg:hidden p-2 text-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200" id="menu-toggle">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <button class="lg:hidden mx-14 text-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200" id="menu-toggle">
+        <svg class="w-9 h-9 transition-all" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
         </svg>
     </button>
 </header>
 
-<nav class="hidden flex-col gap-2 text-xl opacity-0  px-4 transition-all duration-500 ease-in-out max-h-0 overflow-hidden" id="mobile-menu">
-    <a class="border-b-2 hover:-translate-y-1 hover:scale-110 duration-300" href="#experiencia">Sobre mí</a>
-    <a class="border-b-2 hover:-translate-y-1 hover:scale-110 duration-300" href="#proyectos">Proyectos</a>
-    <a class="border-b-2 hover:-translate-y-1 hover:scale-110 duration-300" href="mailto:vntoniojr@outlook.com" target="_blank">Contacto</a>
-    <a class="border-b-2 hover:-translate-y-1 hover:scale-110 duration-300" href="#header">Inicio</a>
+<nav class="hidden flex-col gap-2 text-xl opacity-0  px-5 transition-all duration-500 ease-in-out max-h-0 overflow-hidden" id="mobile-menu">
+    <a class="border-b-4 opacity-80 hover:-translate-y-1 hover:scale-110 duration-300" href="#header">Inicio</a>
+    <a class="border-b-4 opacity-80 hover:-translate-y-1 hover:scale-110 duration-300" href="#experiencia">Sobre mí</a>
+    <a class="border-b-4 opacity-80 hover:-translate-y-1 hover:scale-110 duration-300" href="#proyectos">Proyectos</a>
+    <a class="border-b-4 opacity-80 hover:-translate-y-1 hover:scale-110 duration-300" href="mailto:vntoniojr@outlook.com" target="_blank">Contacto</a>
 </nav>
 
 <script>
@@ -42,4 +42,9 @@
             }
         });
     }
+
+
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+    this.querySelector('svg').classList.toggle('rotate-90');
+    });
 </script>

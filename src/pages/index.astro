@@ -14,62 +14,83 @@ import Projects from "../components/Projects.astro";
 
 <script>
 	import { stagger, spring, timeline, type TimelineDefinition } from "motion";
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				animateElement(entry.target);
+				observer.unobserve(entry.target);
+			}
+		});
+	});
 
-	const cards = document.querySelectorAll(".card-animate");
+	function animateElement(element:any) {
+		const sequence = [
+			[
+				element,
+				{ y: ["40%", "0%"], opacity: [0, 1] },
+				{
+					at: "-0.1",
+					duration: 0.4,
+					delay: stagger(0.3),
+					easing: spring({
+						velocity: 100,
+						stiffness: 50,
+						damping: 10,
+					}),
+				},
+			],
+		];
 
-	const sequence = [
-		[
-			cards,
-			{ y: ["40%", "0%"], opacity: [0, 1] },
-			{
-				at: "-0.1",
-				duration: 0.4,
-				delay: stagger(0.3),
-				easing: spring({ velocity: 100, stiffness: 50, damping: 10 }),
-			},
-		],
-	];
+		timeline(sequence as TimelineDefinition);
+	}
 
-	timeline(sequence as TimelineDefinition);
+	document.addEventListener("DOMContentLoaded", () => {
+		const cards = document.querySelectorAll(".card-animate");
+		cards.forEach((card) => {
+			observer.observe(card);
+		});
+	});
 </script>
 
 <Layout title="Portfolio De Fabián Casas">
 	<main>
-		<SectionContainer class="card-animate" id="inicio">
-			<h1
-				class="text-white text-4xl lg:text-5xl font-bold flex flex-col sm:flex-row gap-x-4 pb-4"
-			>
-				Wena!, soy Fabián<div class="flex justify-start items-center">
-					<Badge>DISPONIBLE PARA TRABAJAR</Badge>
-				</div>
-			</h1>
-			<h2 class="text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">
-				<span>2 años Estudiando</span>
-				<span class="text-red-200/90"
-					>Analista Programador Computacional</span
-				>. <span class="text-blue-200/90"
-					>Soy De Santiago, Chile 🆑.</span
+		<div class="card-animate">
+			<SectionContainer id="inicio">
+				<h1
+					class="text-white text-4xl lg:text-5xl font-bold flex flex-col sm:flex-row gap-x-4 pb-4"
 				>
-				<span class="opacity-85"
-					>Tengo muchas ganas de seguir aprendiendo de este rubro para
-					superarme cada día más 📚.</span
-				>
-			</h2>
-			<nav class="flex gap-4 mt-8 flex-wrap">
-				<SocialPills href="www.linkedin.com/in/fabián-casas-913222310">
-					<Linkedin class="size-4 md:size-5" />
-					LinkedIn
-				</SocialPills>
-				<SocialPills href="https://github.com/Fabiantonio">
-					<GitHub class="size-4 md:size-5" />
-					Github
-				</SocialPills>
-				<SocialPills href="mailto:vntoniojr@outlook.com">
-					<MailIcon class="size-4" />
-					vntoniojr@outlook.com
-				</SocialPills>
-			</nav>
-		</SectionContainer>
+					Wena!, soy Fabián<div class="flex justify-start items-center">
+						<Badge>DISPONIBLE PARA TRABAJAR</Badge>
+					</div>
+				</h1>
+				<h2 class="text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">
+					<span>2 años Estudiando</span>
+					<span class="text-red-200/90"
+						>Analista Programador Computacional</span
+					>. <span class="text-blue-200/90"
+						>Soy De Santiago, Chile 🆑.</span
+					>
+					<span class="opacity-85"
+						>Tengo muchas ganas de seguir aprendiendo de este rubro para
+						superarme cada día más 📚.</span
+					>
+				</h2>
+				<nav class="flex gap-4 mt-8 flex-wrap">
+					<SocialPills href="www.linkedin.com/in/fabián-casas-913222310">
+						<Linkedin class="size-4 md:size-5" />
+						LinkedIn
+					</SocialPills>
+					<SocialPills href="https://github.com/Fabiantonio">
+						<GitHub class="size-4 md:size-5" />
+						Github
+					</SocialPills>
+					<SocialPills href="mailto:vntoniojr@outlook.com">
+						<MailIcon class="size-4" />
+						vntoniojr@outlook.com
+					</SocialPills>
+				</nav>
+			</SectionContainer>
+		</div>
 
 		<SectionContainer id="experiencia">
 			<h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center">

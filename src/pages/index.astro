@@ -13,15 +13,7 @@ import Projects from "../components/Projects.astro";
 ---
 
 <script>
-	import { stagger, spring, timeline, type TimelineDefinition } from "motion";
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach((entry) => {
-			if (entry.isIntersecting) {
-				animateElement(entry.target);
-				observer.unobserve(entry.target);
-			}
-		});
-	});
+	import { stagger, spring, timeline, type TimelineDefinition, inView } from "motion";
 
 	function animateElement(element:any) {
 		const sequence = [
@@ -47,7 +39,9 @@ import Projects from "../components/Projects.astro";
 	document.addEventListener("DOMContentLoaded", () => {
 		const cards = document.querySelectorAll(".card-animate");
 		cards.forEach((card) => {
-			observer.observe(card);
+			inView(card, () => {
+				animateElement(card);
+			}, {});
 		});
 	});
 </script>
